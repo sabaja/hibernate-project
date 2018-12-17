@@ -2,6 +2,7 @@ package com.hibernate.domain;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "PAYLOAD", uniqueConstraints={@UniqueConstraint(columnNames={"id"})})
+@Table(name = "PAYLOAD", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
 public class Payload implements Serializable {
 
 	/**
@@ -23,7 +24,7 @@ public class Payload implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Lob
@@ -32,9 +33,9 @@ public class Payload implements Serializable {
 
 	@Column(name = "DESCRIPTION")
 	private String description;
-	
+
 	@Column(name = "SYSDATE")
-	private Instant sysdate;
+	private OffsetDateTime sysdate;
 
 	public Payload() {
 		super();
@@ -64,11 +65,11 @@ public class Payload implements Serializable {
 		this.description = description;
 	}
 
-	public Instant getSysdate() {
+	public OffsetDateTime getSysdate() {
 		return sysdate;
 	}
 
-	public void setSysdate(Instant sysdate) {
+	public void setSysdate(OffsetDateTime sysdate) {
 		this.sysdate = sysdate;
 	}
 
@@ -121,11 +122,8 @@ public class Payload implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Payload {id=" + id + ", payload=" + payload + ", description=" + description + ", sysdate=" + sysdate
-				+ "}";
+		return "Payload {id=" + id + ", payload=" + payload + ", description=" + description + ", sysdate="
+				+ sysdate.toString() + "}";
 	}
-	
-	
-	
-	
+
 }

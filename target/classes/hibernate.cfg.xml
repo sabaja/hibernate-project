@@ -5,19 +5,23 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<!-- SQL Dialect -->
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
 		<!-- Database Connection Settings -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/HIBERNATE</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">R!nald!1976</property>		
+		<property name="hibernate.connection.password">R!nald!1976</property>
+
 
 		<!-- Specifying Session Context -->
-		<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property>
+		<property name="show_sql">true</property>
+		<property name="hb.hbm2ddl.auto">update</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.connection.pool_size">10</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- Class mapping -->
+		<mapping class="com.hibernate.domain.Payload"/>
 
-		<!-- Mapping With Model Class Containing Annotations -->
-		<mapping class="com.jcg.hibernate.annotations.Student" />
 	</session-factory>
 </hibernate-configuration>
